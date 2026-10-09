@@ -1,0 +1,27 @@
+,Feature,Category,Employees,Leavers,AttritionRate_%
+0,Gender,Female,20230,5180,25.61
+1,Gender,Male,26668,6793,25.47
+2,Gender,Non-Binary,2102,557,26.5
+3,JobRole,Data Analyst,9706,2468,25.43
+4,JobRole,HR Specialist,9624,2476,25.73
+5,JobRole,Manager,9518,2429,25.52
+6,JobRole,Sales Exec,9583,2453,25.6
+7,JobRole,Software Engineer,10569,2704,25.58
+8,PerformanceRating,1.0,2376,489,20.58
+9,PerformanceRating,2.0,7182,1711,23.82
+10,PerformanceRating,3.0,25035,6284,25.1
+11,PerformanceRating,4.0,9627,2601,27.02
+12,PerformanceRating,5.0,4780,1445,30.23
+13,TenureGroup,0-2 yrs,22052,6442,29.21
+14,TenureGroup,3-5 yrs,12040,3166,26.3
+15,TenureGroup,6-10 yrs,9514,2155,22.65
+16,TenureGroup,10+ yrs,5394,767,14.22
+17,AgeGroup,18-25,3932,1083,27.54
+18,AgeGroup,26-35,24019,5981,24.9
+19,AgeGroup,36-45,14782,3822,25.86
+20,AgeGroup,46-55,5464,1445,26.45
+21,AgeGroup,56+,803,199,24.78
+22,SalaryBand,Low,12250,3438,28.07
+23,SalaryBand,Medium,12766,3348,26.23
+24,SalaryBand,High,11734,2974,25.35
+25,SalaryBand,Very High,12250,2770,22.61

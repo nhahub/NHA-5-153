@@ -1,0 +1,13 @@
+,,No,Yes
+Age,mean,36.304,36.188
+Age,median,35.0,35.0
+Age,std,7.784,7.979
+TenureYears,mean,4.85,3.564
+TenureYears,median,3.0,2.0
+TenureYears,std,5.257,3.893
+PerformanceRating,mean,3.122,3.224
+PerformanceRating,median,3.0,3.0
+PerformanceRating,std,0.949,0.955
+MonthlySalary,mean,6051.354,5847.545
+MonthlySalary,median,5998.69,5900.915
+MonthlySalary,std,1959.875,1942.907

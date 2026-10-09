@@ -1,0 +1,14 @@
+,Pearson_r
+TenureYears,-0.1127
+Salary_Performance_Ratio,-0.0591
+PerformanceRating,0.0466
+MonthlySalary,-0.0454
+Age,-0.0065
+Gender_Non-Binary,0.0045
+Gender_Male,-0.0025
+JobRole_HR Specialist,0.0018
+JobRole_Data Analyst,-0.0016
+Gender_Female,0.0007
+JobRole_Manager,-0.0006
+JobRole_Sales Exec,0.0003
+JobRole_Software Engineer,0.0002
