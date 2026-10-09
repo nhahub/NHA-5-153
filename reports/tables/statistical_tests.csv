@@ -1,0 +1,12 @@
+,Feature,Test,Statistic,p_value,Mean_Stayed,Mean_Left,PointBiserial_r,CramersV,Significant_(p<0.05)
+0,Age,Mann-Whitney U,230881790.5,0.0776,36.304,36.1877,-0.0065,,False
+1,TenureYears,Mann-Whitney U,258514638.5,0.0,4.8498,3.564,-0.1127,,True
+2,PerformanceRating,Mann-Whitney U,216108882.5,0.0,3.122,3.2236,0.0466,,True
+3,MonthlySalary,Mann-Whitney U,241832645.0,0.0,6051.3538,5847.5447,-0.0454,,True
+4,Salary_Performance_Ratio,Mann-Whitney U,247277077.0,0.0,2205.4102,2034.4512,-0.0591,,True
+5,Gender,Chi-square (dof=2),1.0989,0.5773,,,,0.0047,False
+6,JobRole,Chi-square (dof=4),0.246,0.993,,,,0.0022,False
+7,PerformanceRating,Chi-square (dof=4),110.6249,0.0,,,,0.0475,True
+8,TenureGroup,Chi-square (dof=3),564.8084,0.0,,,,0.1074,True
+9,AgeGroup,Chi-square (dof=4),16.7886,0.0021,,,,0.0185,True
+10,SalaryBand,Chi-square (dof=3),99.5812,0.0,,,,0.0451,True

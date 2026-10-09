@@ -1,0 +1,5 @@
+,Feature,Q1,Q3,IQR,LowerFence,UpperFence,Outliers,Outliers_%
+0,Age,32.0,41.0,9.0,18.5,54.5,1120,2.29
+1,TenureYears,1.0,6.0,5.0,-6.5,13.5,2940,6.0
+2,PerformanceRating,3.0,4.0,1.0,1.5,5.5,2376,4.85
+3,MonthlySalary,4675.982,7310.862,2634.88,723.662,11263.182,328,0.67
