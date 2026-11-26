@@ -1,0 +1,17 @@
+{
+  "model_id": "v20261125-181258",
+  "algorithm": "lr_core3",
+  "test_roc_auc": 0.57738,
+  "test_pr_auc": 0.30383,
+  "test_brier": 0.18735,
+  "test_log_loss": 0.56,
+  "test_precision_top20": 0.32449,
+  "test_recall_top20": 0.25379,
+  "test_lift_top20": 1.26895,
+  "test_base_rate": 0.25571,
+  "test_roc_auc_ci_low": 0.56533,
+  "test_roc_auc_ci_high": 0.58844,
+  "cv_roc_auc": 0.58097,
+  "m3_baseline_test_roc_auc": 0.57699,
+  "m3_baseline_test_brier": 0.24469
+}

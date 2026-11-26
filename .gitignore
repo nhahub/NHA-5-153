@@ -5,3 +5,12 @@ __pycache__/
 venv/
 .env
 .DS_Store
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+mlruns/
+mlartifacts/
+mlflow.db
+monitoring/
+*.log

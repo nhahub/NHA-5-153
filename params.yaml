@@ -1,0 +1,38 @@
+# Single source of truth for every tunable of the MLOps pipeline.
+# Tracked by DVC (see dvc.yaml): changing a value here invalidates the stages that depend on it.
+
+data:
+  test_size: 0.20          # same split as Milestone 3 (random_state=42) so results are comparable
+  random_state: 42
+
+train:
+  cv_folds: 5
+  lr_C_grid: [0.01, 0.1, 1.0, 10.0]   # inverse regularisation strengths searched for logistic regression
+  selection_tolerance: 0.002          # models within this CV-AUC gap of the best are "tied" -> simplest wins
+  reference_sample_size: 10000        # rows of training data kept as the drift reference
+
+risk:
+  # Operating policy: HR has limited capacity, so employees are ranked by predicted risk
+  # and bands are defined by percentile of the training score distribution.
+  high_pct: 0.20           # top 20 % of scores  -> "High"
+  medium_pct: 0.30         # next 30 %           -> "Medium"; the remaining 50 % -> "Low"
+
+monitoring:
+  psi_warn: 0.10           # PSI < 0.10 stable | 0.10-0.25 moderate shift | > 0.25 major shift
+  psi_critical: 0.25
+  ks_alpha: 0.001          # KS-test p-value below this (AND PSI >= psi_warn) confirms drift
+  min_samples: 200         # minimum recent predictions before drift tests are trusted
+  high_risk_share_warn: 0.05      # |observed - expected| share of "High" predictions (absolute)
+  high_risk_share_critical: 0.10
+  min_labels: 300          # minimum labelled outcomes before performance is evaluated
+  auc_drop_warn: 0.02      # absolute drop vs. test-set AUC (CI upper bound must be below baseline - drop)
+  auc_drop_critical: 0.04
+  auc_floor: 0.52          # below this the model is no better than a coin flip
+  max_model_age_days: 90
+  volume_drop_warn: 0.5    # recent traffic below 50 % of the previous window
+
+retraining:
+  min_new_labels: 1000     # labelled outcomes needed before a data-driven retrain is considered
+  min_auc_gain: 0.002      # challenger must beat champion by this much (paired bootstrap)
+  max_regression: 0.010    # ... and may not be worse than this overall (non-inferiority bound)
+  bootstrap_iterations: 500
