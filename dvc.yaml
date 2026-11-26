@@ -1,0 +1,42 @@
+# Reproducible pipeline definition (DVC).  Run:  dvc repro      |  inspect:  dvc dag
+#
+# Stage inputs are hashed: change the dataset, the code or a value in params.yaml and `dvc repro`
+# re-trains; otherwise it is a no-op. Outputs are tracked by git (cache: false) because the model is
+# only ~10 KB; switch to `cache: true` + `dvc push` with remote storage when models get large.
+# To version the (2.4 MB) dataset itself with DVC instead of git:  dvc add employee_attriton_data_clean.csv
+stages:
+  train:
+    cmd: python -m attrition.train
+    deps:
+      - employee_attriton_data_clean.csv
+      - src/attrition/config.py
+      - src/attrition/data.py
+      - src/attrition/features.py
+      - src/attrition/modeling.py
+      - src/attrition/train.py
+    params:
+      - data
+      - train
+      - risk
+    outs:
+      - models/attrition_model.joblib:
+          cache: false
+      - models/model_card.json:
+          cache: false
+      - models/reference_sample.csv.gz:
+          cache: false
+    metrics:
+      - reports/mlops/metrics.json:
+          cache: false
+
+  monitor:
+    # Scores live traffic against the training reference and writes monitoring/reports/latest.json.
+    # always_changed: live logs are not a tracked dependency, so run it on every `dvc repro`.
+    cmd: python -m attrition.monitoring.monitor --no-notify
+    deps:
+      - models/model_card.json
+      - models/reference_sample.csv.gz
+      - src/attrition/monitoring
+    params:
+      - monitoring
+    always_changed: true

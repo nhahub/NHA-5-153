@@ -1,0 +1,50 @@
+# Full stack:  docker compose up --build
+#   API        http://localhost:8000/docs      (Swagger UI)
+#   Dashboard  http://localhost:8501           (HR dashboard)
+#   MLflow     http://localhost:5000           (experiments + model registry)
+# Prediction logs / monitoring reports are shared through ./monitoring.
+
+x-app: &app
+  build: .
+  image: attrition-mlops:latest
+  environment:
+    API_KEY: ${API_KEY:-}                    # set to require the X-API-Key header
+    ALERT_WEBHOOK_URL: ${ALERT_WEBHOOK_URL:-} # Slack-compatible webhook for monitoring alerts
+  volumes:
+    - ./monitoring:/app/monitoring
+  restart: unless-stopped
+
+services:
+  api:
+    <<: *app
+    ports: ["8000:8000"]
+
+  dashboard:
+    <<: *app
+    command: ["streamlit", "run", "src/attrition/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    environment:
+      API_URL: http://api:8000
+      API_KEY: ${API_KEY:-}
+    ports: ["8501:8501"]
+    depends_on: [api]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health', timeout=4)"]
+
+  monitor:
+    <<: *app
+    command: ["python", "-m", "attrition.monitoring.monitor", "--window-hours", "168", "--watch", "3600"]
+    depends_on: [api]
+    healthcheck:
+      disable: true
+
+  mlflow:
+    <<: *app
+    command: ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000",
+              "--backend-store-uri", "sqlite:////mlflow/mlflow.db", "--default-artifact-root", "/mlflow/artifacts"]
+    volumes: ["mlflow-data:/mlflow"]
+    ports: ["5000:5000"]
+    healthcheck:
+      disable: true
+
+volumes:
+  mlflow-data:

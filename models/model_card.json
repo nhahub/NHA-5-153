@@ -1,0 +1,197 @@
+{
+  "model_id": "v20261125-181258",
+  "package_version": "1.0.0",
+  "trained_at": "2026-11-25T18:15:02.051883+00:00",
+  "algorithm": "lr_core3",
+  "hyperparameters": {
+    "LogisticRegression.C": 0.01,
+    "LogisticRegression.class_weight": null,
+    "LogisticRegression.dual": false,
+    "LogisticRegression.fit_intercept": true,
+    "LogisticRegression.intercept_scaling": 1,
+    "LogisticRegression.l1_ratio": 0.0,
+    "LogisticRegression.max_iter": 2000,
+    "LogisticRegression.n_jobs": null,
+    "LogisticRegression.penalty": "deprecated",
+    "LogisticRegression.random_state": null,
+    "LogisticRegression.solver": "lbfgs",
+    "LogisticRegression.tol": 0.0001,
+    "LogisticRegression.verbose": 0,
+    "LogisticRegression.warm_start": false
+  },
+  "features": {
+    "inputs": [
+      "TenureYears",
+      "PerformanceRating",
+      "MonthlySalary"
+    ],
+    "limits": {
+      "TenureYears": [
+        0.0,
+        60.0
+      ],
+      "PerformanceRating": [
+        1,
+        5
+      ],
+      "MonthlySalary": [
+        0.0,
+        100000.0
+      ]
+    },
+    "engineered": [],
+    "excluded": {
+      "Age": "no signal",
+      "Gender": "no signal / protected attribute",
+      "JobRole": "no signal"
+    }
+  },
+  "metrics": {
+    "cv": {
+      "roc_auc": 0.5809667129298239,
+      "pr_auc": 0.3045830296046736,
+      "brier": 0.1870773503199522,
+      "log_loss": 0.5591624643716878,
+      "precision_top20": 0.32028061224489796,
+      "recall_top20": 0.25049880287310455,
+      "lift_top20": 1.2524940143655228,
+      "base_rate": 0.2557142857142857,
+      "roc_auc_fold_std": 0.011616147638568492
+    },
+    "test": {
+      "roc_auc": 0.5773792199516334,
+      "pr_auc": 0.3038331183774748,
+      "brier": 0.18734919252014764,
+      "log_loss": 0.5600020531822066,
+      "precision_top20": 0.32448979591836735,
+      "recall_top20": 0.25379090183559455,
+      "lift_top20": 1.2689545091779728,
+      "base_rate": 0.2557142857142857
+    },
+    "test_roc_auc_ci95": [
+      0.5773792199516334,
+      0.5653295206307413,
+      0.5884437776998696
+    ],
+    "m3_baseline_test": {
+      "roc_auc": 0.5769901072085617,
+      "pr_auc": 0.3031013726840694,
+      "brier": 0.24468990934384405,
+      "log_loss": 0.6814729687937424,
+      "precision_top20": 0.3239795918367347,
+      "recall_top20": 0.2533918595371109,
+      "lift_top20": 1.2669592976855546,
+      "base_rate": 0.2557142857142857
+    }
+  },
+  "risk_policy": {
+    "high_pct": 0.2,
+    "medium_pct": 0.3,
+    "thresholds": {
+      "high": 0.30245814910660723,
+      "medium": 0.26300157491409204
+    }
+  },
+  "candidates_cv": {
+    "m3_baseline_lr_smote_all_features": {
+      "roc_auc": 0.58056,
+      "pr_auc": 0.30417,
+      "brier": 0.24421,
+      "log_loss": 0.68036,
+      "precision_top20": 0.31798,
+      "recall_top20": 0.2487,
+      "lift_top20": 1.24352,
+      "base_rate": 0.25571,
+      "roc_auc_fold_std": 0.01149
+    },
+    "lr_core3": {
+      "roc_auc": 0.58097,
+      "pr_auc": 0.30458,
+      "brier": 0.18708,
+      "log_loss": 0.55916,
+      "precision_top20": 0.32028,
+      "recall_top20": 0.2505,
+      "lift_top20": 1.25249,
+      "base_rate": 0.25571,
+      "roc_auc_fold_std": 0.01162
+    },
+    "lr_engineered": {
+      "roc_auc": 0.58058,
+      "pr_auc": 0.30417,
+      "brier": 0.18709,
+      "log_loss": 0.55917,
+      "precision_top20": 0.31939,
+      "recall_top20": 0.2498,
+      "lift_top20": 1.249,
+      "base_rate": 0.25571,
+      "roc_auc_fold_std": 0.01157
+    },
+    "hgb_engineered": {
+      "roc_auc": 0.57915,
+      "pr_auc": 0.30133,
+      "brier": 0.18727,
+      "log_loss": 0.55971,
+      "precision_top20": 0.31747,
+      "recall_top20": 0.2483,
+      "lift_top20": 1.24152,
+      "base_rate": 0.25571,
+      "roc_auc_fold_std": 0.00929
+    },
+    "rf_engineered": {
+      "roc_auc": 0.5626,
+      "pr_auc": 0.28909,
+      "brier": 0.18901,
+      "log_loss": 0.56425,
+      "precision_top20": 0.29732,
+      "recall_top20": 0.23254,
+      "lift_top20": 1.16271,
+      "base_rate": 0.25571,
+      "roc_auc_fold_std": 0.00874
+    },
+    "xgb_engineered": {
+      "roc_auc": 0.58004,
+      "pr_auc": 0.30324,
+      "brier": 0.18715,
+      "log_loss": 0.55936,
+      "precision_top20": 0.32194,
+      "recall_top20": 0.2518,
+      "lift_top20": 1.25898,
+      "base_rate": 0.25571,
+      "roc_auc_fold_std": 0.01095
+    }
+  },
+  "training_data": {
+    "path": "employee_attriton_data_clean.csv",
+    "sha256": "6ecc9bbc80f76172896a7eb5f81ef65bdfc9a8b8a05688c001a9538fb2acd765",
+    "rows": 49000,
+    "train_rows": 39200,
+    "test_rows": 9800,
+    "attrition_rate": 0.2557142857142857,
+    "split": {
+      "test_size": 0.2,
+      "random_state": 42,
+      "stratified": true
+    }
+  },
+  "mlflow": {
+    "tracking_uri": "sqlite:///<local>",
+    "experiment": "employee-attrition",
+    "run_id": "ef0453d009984a7babc7637f9d13262c",
+    "registered_model": "employee-attrition-classifier",
+    "registered_version": "1"
+  },
+  "git_commit": "913fa8d",
+  "environment": {
+    "python": "3.13.14",
+    "scikit_learn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5"
+  },
+  "intended_use": "Rank current employees by relative attrition risk to prioritise retention conversations.",
+  "limitations": [
+    "Predictive signal in the available features is weak (test ROC-AUC ~0.58). The model ranks employees by relative risk; it must not be used for individual employment decisions.",
+    "Tenure, salary and performance rating are the only informative features; satisfaction, workload, manager quality and market conditions are not in the data.",
+    "Probabilities are calibrated to the 25.6% historical attrition rate; a changed base rate requires recalibration.",
+    "Age, gender and job role are excluded on purpose (no signal, and protected attributes should not drive scores)."
+  ]
+}
